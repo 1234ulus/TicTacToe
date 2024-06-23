@@ -1,12 +1,19 @@
 import pytest
 import TicTacTest
-#3 x evaluate
+
+def test_evaluate():
+    play = TicTacTest.evaluate('-------ooo----------')
+    assert play == 1
+    play2 = TicTacTest.evaluate('-------oxoxxox------')    
+    assert play2 == 0
+    play3 = TicTacTest.evaluate('oxoxoxoxoxoxoxoxoxox') 
+    assert play3 == 1
 
 
 def test_move_to_empty_space():
     board = TicTacTest.pc_move('--------------------')
     assert len(board) == 20
-    assert board.count('x') == 1
+    assert board.count('o') == 1
     assert board.count('-') == 19
 
 def test_move_failure():
