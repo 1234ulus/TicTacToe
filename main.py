@@ -2,20 +2,15 @@ from random import randrange
 
 def evaluate(string):
     play = 0
-    for i in range(0, 20):
-        if string[i:i + 3] == "xxx":
-            print('You win!')
-            play = 1
-        elif string[i:i + 3] == "ooo":
-            print('I win')
-            play = 1
-        else:
-            i += 1
-    if play < 1:
-        if string.find("-") > 0:
-            print('Time for next move')
-        else:
-            print('Nobody won')
+    if "xxx" in string:
+        print('You win!')
+        play = 1
+    elif "ooo" in string:
+        print('I win')
+        play = 1
+    elif "-" not in string:
+        print('Nobody won')
+        play = 1
     return play
 
 def move(board, mark, position):
@@ -23,9 +18,9 @@ def move(board, mark, position):
     newboard = []
     if board[p] == "-":
         if mark == "x":
-            newboard = board[0:p] + board[p].replace("-", "x") + board[(p+1):20]
+            newboard = board[0:p] + "x" + board[(p+1):]
         elif mark == "o":
-            newboard = board[0:p] + board[p].replace("-", "o") + board[(p+1):20]
+            newboard = board[0:p] + "o" + board[(p+1):]
     else:
         print('Position occupied, loss of move')
         newboard = board
@@ -33,10 +28,17 @@ def move(board, mark, position):
 def player_move (board):
     print("Where you want to put your X ?")
     pos = int(input("Number from 0 to 19: "))
-    board = move(board, "x", pos)
-    return board
+    if pos not in range (0,20):
+        print("Position not in the range")
+        print('Loss of move')
+        return(board)
+    else:
+        board = move(board, "x", pos)
+        return board     
+
 def pc_move (board):
     pc = randrange(0, 20)
+    print("My move is:", pc)
     board = move(board, "o", pc)
     return board
 def tictactoe_1d():
