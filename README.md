@@ -1,7 +1,7 @@
-Run main.py to play o and x with computer
+To play O and X with computer, run:    main.py 
 
-TicTacTest.py is file prepare to test program, I remove output from user
+To see this program test, go to:    test_lesson.py
 
-test_lesson.py contains test for game
+File for testing whitout user output is:   TicTacTest.py 
 
-poem.txt It is a nice poem 
+To read a nice poem, open:    poem.txt
